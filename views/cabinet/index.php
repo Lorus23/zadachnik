@@ -27,7 +27,7 @@
                         <td ><?php echo $tasksList['username'];?></td>
                         <td ><?php echo $tasksList['email'];?></td>
                         <td ><?php echo $tasksList['text'];?></td>
-                        <td ><?php echo $tasksList['status'];?></td>
+                        <td ><?php if ($tasksList['status']==1) {echo 'выполнено';} else {echo 'не выполнено';}?></td>
 <!--                         <td ><img src="--><?php //echo $tasksList['image'];?><!--" alt=""></td> -->
                         <td>
                             <a href="/task/edit/<?php echo $tasksList['id'];?>">

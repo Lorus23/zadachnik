@@ -1,10 +1,5 @@
 <?php include ROOT . '/views/layouts/header.php'; ?>
 
-<?php
-
-
-?>
-
 <section>
     <p>Список задач:</p>
         <table class="table-bordered table-striped table">
@@ -16,14 +11,12 @@
                 <th>Изображение</th>
             </tr>
 
-
-
             <?php foreach ($tasks as $tasksList): ?>
                 <tr>
                     <td ><?php echo $tasksList['username'];?></td>
                     <td ><?php echo $tasksList['email'];?></td>
                     <td ><?php echo $tasksList['text'];?></td>
-                    <td ><?php echo $tasksList['status'];?></td>
+                    <td ><?php if ($tasksList['status']==1) {echo 'выполнено';} else {echo 'не выполнено';}?></td>
                     <td ><img src="<?php echo $tasksList['image'];?>" alt=""></td>
                 </tr>
             <?php endforeach; ?>

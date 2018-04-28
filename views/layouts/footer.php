@@ -11,9 +11,7 @@
         </div>
     </div>
 </footer><!--/Footer-->
-
-
-
+<script src="/template/js/modal.js"></script>
 <script src="/template/js/jquery.js"></script>
 <script src="/template/js/jquery.cycle2.min.js"></script>
 <script src="/template/js/jquery.cycle2.carousel.min.js"></script>
