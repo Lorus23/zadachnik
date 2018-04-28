@@ -7,30 +7,16 @@ class tasks
 {
     const SHOW_BY_DEFAULT = 3;
 
-    public static function getTasksList($page = 1)
+    public static function getTasksList($page = 1, $sort)
     {
         $page = intval($page);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
-
-
-
-        if (isset($_GET['order'])){
-            $order = $_GET['order'];
-        } else {
-            $order = 'asset_num';
-        }
-
-        if (isset($_GET['sort'])){
-            $sort = $_GET['sort'];
-        } else {
-            $sort = 'ASC';
-        }
-
+        $sort = $sort;
         // Соединение с БД
         $db = Db::getConnection();
 
         // Запрос к БД
-        $sql = 'SELECT * FROM zadachi LIMIT '.self::SHOW_BY_DEFAULT.' OFFSET '.$offset
+        $sql = 'SELECT * FROM zadachi ORDER BY '.$sort.' LIMIT '.self::SHOW_BY_DEFAULT.' OFFSET '.$offset
 
         ;
 
@@ -49,6 +35,7 @@ class tasks
             $taskList[$i]['username'] = $row['username'];
             $taskList[$i]['email'] = $row['email'];
             $taskList[$i]['text'] = $row['text'];
+            $taskList[$i]['status'] = $row['status'];
             $taskList[$i]['image'] = $row['image'];
             $i++;
         }

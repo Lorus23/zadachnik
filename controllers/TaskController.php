@@ -40,4 +40,49 @@ class TaskController
         return true;
     }
 
+    public function actionSortbyusername($page =1)
+    {
+
+        $tasks = tasks::getTasksList($page, $sort = 'username');
+
+        $total = tasks::getTotalTasks();
+
+        $pagination = new Pagination(10,$page, tasks::SHOW_BY_DEFAULT, 'page-');
+
+        // Подключаем вид
+        require_once(ROOT . '/views/site/index.php');
+        return true;
+
+    }
+
+    public function actionSortbyemail($page=1)
+    {
+
+        $tasks = tasks::getTasksList($page, $sort = 'email');
+
+        $total = tasks::getTotalTasks();
+
+        $pagination = new Pagination(10,$page, tasks::SHOW_BY_DEFAULT, 'page-');
+
+        // Подключаем вид
+        require_once(ROOT . '/views/site/index.php');
+        return true;
+    }
+
+    public function actionSortbystatus($page=1)
+    {
+
+        $tasks = tasks::getTasksList($page, $sort = 'status');
+
+        $total = tasks::getTotalTasks();
+
+        $pagination = new Pagination(10,$page, tasks::SHOW_BY_DEFAULT, 'page-');
+
+        // Подключаем вид
+        require_once(ROOT . '/views/site/index.php');
+        return true;
+
+
+    }
+
 }
