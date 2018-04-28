@@ -14,7 +14,6 @@ class SiteController
     public function actionIndex($page=1)
     {
         $tasks = tasks::getTasksList($page, $sort = 'username');
-
         $total = tasks::getTotalTasks();
 
         $pagination = new Pagination(10,$page, tasks::SHOW_BY_DEFAULT, 'page-');

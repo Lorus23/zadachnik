@@ -59,6 +59,44 @@ class tasks
 
     }
 
+    public static function updateTask($username, $email, $text, $status, $id)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Запрос к БД
+        $sql = 'UPDATE zadachi SET username=:username, email=:email, text=:text, status=:status WHERE id=:id';
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id,  PDO::PARAM_INT);
+        $result->bindParam(':username', $username,  PDO::PARAM_STR);
+        $result->bindParam(':email', $email,  PDO::PARAM_STR);
+        $result->bindParam(':text', $text,  PDO::PARAM_STR);
+        $result->bindParam(':status', $status,  PDO::PARAM_STR);
+
+        return $result->execute();
+
+    }
+
+    public static function getTaskByID($id)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Текст запроса к БД
+        $sql = 'SELECT * FROM zadachi WHERE id = :id';
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+        // Указываем, что хотим получить данные в виде массива
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result->execute();
+
+        return $result->fetch();
+    }
+
     public static function getTotalTasks()
     {
         // Соединение с БД

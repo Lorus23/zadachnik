@@ -14,11 +14,11 @@
 
             <table class="table-bordered table-striped table">
                 <tr>
-                    <th><a href="/task/Sortbyusername">Имя пользователя</a></th>
-                    <th><a href="/task/Sortbyemail">е-mail</a></th>
+                    <th>Имя пользователя</th>
+                    <th>е-mail</th>
                     <th>Текст задачи</th>
-                    <th><a href="/task/Sortbystatus">Статус</a></th>
-                    <th>Изображение</th>
+                    <th>Статус</th>
+<!--                    <th>Изображение</th>-->
                     <th>Изменить задание</th>
                 </tr>
                 <?php foreach ($tasks as $tasksList): ?>
@@ -27,10 +27,10 @@
                         <td ><?php echo $tasksList['username'];?></td>
                         <td ><?php echo $tasksList['email'];?></td>
                         <td ><?php echo $tasksList['text'];?></td>
-                        <td ><?php if ($tasksList['status']='1'){echo 'не выполнено';} else {echo 'выполнено';}?></td>
-                        <td ><img src="<?php echo $tasksList['image'];?>" alt=""></td>
+                        <td ><?php echo $tasksList['status'];?></td>
+<!--                         <td ><img src="--><?php //echo $tasksList['image'];?><!--" alt=""></td> -->
                         <td>
-                            <a href="/task/<?php echo $tasksList['id'];?>">
+                            <a href="/task/edit/<?php echo $tasksList['id'];?>">
                                 <img src="\template\images\home\edit.png" alt="">
                             </a>
                            </td>

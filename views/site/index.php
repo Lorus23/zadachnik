@@ -23,7 +23,7 @@
                     <td ><?php echo $tasksList['username'];?></td>
                     <td ><?php echo $tasksList['email'];?></td>
                     <td ><?php echo $tasksList['text'];?></td>
-                    <td ><?php if ($tasksList['status']='1'){echo 'не выполнено';} else {echo 'выполнено';}?></td>
+                    <td ><?php echo $tasksList['status'];?></td>
                     <td ><img src="<?php echo $tasksList['image'];?>" alt=""></td>
                 </tr>
             <?php endforeach; ?>

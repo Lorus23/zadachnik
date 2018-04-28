@@ -3,6 +3,7 @@
 return array(
     //Создание задачи
     'task/create' => 'task/create',
+    'task/edit/([0-9]+)' => 'task/edit/$1',
 
     //Сортировка данных в таблице с пагинацией
     'task/Sortbyusername/page-([0-9]+)' => 'task/Sortbyusername/$1',

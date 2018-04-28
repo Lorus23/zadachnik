@@ -40,6 +40,38 @@ class TaskController
         return true;
     }
 
+    public static function actionEdit ($id)
+    {
+
+        $result = false;
+        $id = intval($id);
+        $task = tasks::getTaskByID($id);
+
+        $username = false;
+        $email = false;
+        $text = false;
+        // Обработка формы
+        if (isset($_POST['submit'])) {
+            // Если форма отправлена
+            // Получаем данные из формы
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $text = $_POST['text'];
+            $status = $_POST['status'];
+
+                 // Флаг ошибок
+            $errors = false;
+
+            tasks::updateTask($username, $email, $text, $status, $id);
+        }
+
+        // Подключаем вид
+        require_once(ROOT . '/views/tasks/taskEdit.php');
+        return true;
+    }
+
+
+
     public function actionSortbyusername($page =1)
     {
 
